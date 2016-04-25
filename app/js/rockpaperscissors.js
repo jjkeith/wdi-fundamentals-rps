@@ -22,10 +22,15 @@ function randomPlay() {
 ////////////////////////////////////////////////
 
 function getPlayerMove(move) {
+    var move = prompt;
+    if move === true {
+        return move;
+    } else move === null {
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `getInput()`.
-    return /* Your Expression */;
+    return getInput();
+}
 }
 
 function getComputerMove(move) {
