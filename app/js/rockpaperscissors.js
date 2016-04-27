@@ -39,6 +39,8 @@ function getWinner(playerMove,computerMove) {
         || (playerMove === 'scissors' && computerMove === 'paper') 
         || (playerMove === 'paper' && computerMove === 'rock')) {
       winner = 'player';
+    } else if (playerMove === 'gun') {
+            winner = 'end';
     } else {
       winner = 'computer';
     }
@@ -54,8 +56,10 @@ function defineMove(playerMove,computerMove) {
          announceMove = 'Rock crushes scissors.';
     } else if ((playerMove === 'rock' || computerMove === 'rock') && (playerMove === 'paper' || computerMove === 'paper')) {
         announceMove = 'Paper covers rock.';
+    } else if (playerMove === 'gun') {
+        announceMove = "Gun? That's not fair. I, computer, quit.";
     } else {
-        announceMove = playerMove + ' is not an option.' 
+        announceMove = 'No, ' + playerMove + ' is not an option.' 
 }return announceMove;       
 }
 
@@ -70,19 +74,22 @@ function playToFive() {
             if (getWinner(playerMove,computerMove) === 'player') {
                 playerWins += 1;
                 console.log(defineMove(playerMove,computerMove) + ' ' + 'You win!');
-        } else if (getWinner(playerMove,computerMove) === 'computer') {
+            } else if (getWinner(playerMove,computerMove) === 'computer') {
                 computerWins += 1;
                 console.log(defineMove(playerMove,computerMove)+ ' ' + 'You lose.');
-        } else {
-            console.log('You and computer both chose ' + playerMove + '. A tie.');
+            } else if (getWinner(playerMove,computerMove) === 'end') {
+                playerWins += 5;
+                console.log(defineMove(playerMove,computerMove));
+            } else {
+                console.log('You and computer both chose ' + playerMove + '. A tie.');
       }
     }
     if (computerWins === 5) {
         console.log('The computer beat you.');
-    } else if (playerWins === 5) {
+    } else if (playerWins >= 5) {
         console.log('You beat the computer!');
     }
     
-    console.log('[Player: ' + playerWins + ', Computer:' + computerWins + ']');
+    console.log('[You: ' + playerWins + ', Computer: ' + computerWins + ']');
 }
 playToFive();
