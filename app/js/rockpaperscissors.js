@@ -57,7 +57,7 @@ function defineMove(playerMove,computerMove) {
     } else if ((playerMove === 'rock' || computerMove === 'rock') && (playerMove === 'paper' || computerMove === 'paper')) {
         announceMove = 'Paper covers rock.';
     } else if (playerMove === 'gun') {
-        announceMove = "Gun? That's not fair. I, computer, quit.";
+        announceMove = "Gun? That's not fair. Computer quits.";
     } else {
         announceMove = 'No, ' + playerMove + ' is not an option.' 
 }return announceMove;       
@@ -78,7 +78,7 @@ function playToFive() {
                 computerWins += 1;
                 console.log(defineMove(playerMove,computerMove)+ ' ' + 'You lose.');
             } else if (getWinner(playerMove,computerMove) === 'end') {
-                playerWins += 5;
+                playerWins = 5;
                 console.log(defineMove(playerMove,computerMove));
             } else {
                 console.log('You and computer both chose ' + playerMove + '. A tie.');
